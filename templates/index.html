@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика посещений</title>
+</head>
+<body>
+    <h1>История посещений</h1>
+    <ul>
+        {% for visit in visits %}
+            <li>Подключение в {{ visit.time }} новым пользователем id: {{ visit.user_id }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Статистика пользователей</h2>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID пользователя</th>
+                <th>Количество подключений</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_id, count in stats.items() %}
+                <tr>
+                    <td>{{ user_id }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
